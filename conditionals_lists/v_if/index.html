@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+  <div id="app">
+    <!-- removes or adds to dom, doesn't hide -->
+    <p v-if="show">Now you see me!</p>
+    <p v-else>Now You See Me 2! Great sequel name right?</p>
+    <template v-if="show">
+      <h1>Heading</h1>
+      <p>Inside a template</p>
+    </template>
+    <!-- toggles showing with css, doesn't remove from dom -->
+    <p v-show="show">Do you also see me?</p>
+    <button @click="show = !show">Switch</button>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
