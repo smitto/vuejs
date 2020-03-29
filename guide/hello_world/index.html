@@ -3,11 +3,13 @@
 <head>
   <title>My first Vue app</title>
   <script src="https://unpkg.com/vue"></script>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <div id="app">
     {{ message }}
   </div>
+  <hr>
 
   <div id="app-2">
     <span v-bind:title="message">
@@ -15,10 +17,12 @@
       to see my dynamically bound title!
     </span>
   </div>
+  <hr>
 
   <div id="app-3">
     <span v-if="seen">Now you see me</span>
   </div>
+  <hr>
 
   <div id="app-4">
     <ol>
@@ -27,68 +31,90 @@
       </li>
     </ol>
   </div>
+  <hr>
 
   <div id="app-5">
     <p>{{ message }}</p>
     <button v-on:click="reverseMessage">Reverse Message</button>
   </div>
+  <hr>
 
   <div id="app-6">
     <p>{{ message }}</p>
     <input v-model="message">
   </div>
+  <hr>
 
-  <script>
-    var app = new Vue({
-      el: '#app',
-      data: {
-        message: 'Hello Vue!'
-      }
-    })
+  <div id="app-7">
+    <ol>
+      <todo-item
+        v-for="item in groceryList"
+        v-bind:todo="item"
+        v-bind:key="item.id"
+      ></todo-item>
+    </ol>
+  </div>
+  <hr>
 
-    var app2 = new Vue({
-      el: '#app-2',
-      data: {
-        message: 'You loaded this page on ' + new Date().toLocaleString()
-      }
-    })
+  <div id="app-8">
+    <p>{{ foo }}</p>
+    <!-- this will no longer update `foo`! -->
+    <button v-on:click="foo = 'baz'">Change it</button>
+  </div>
+  <hr>
 
-    var app3 = new Vue({
-      el: '#app-3',
-      data: {
-        seen: true
-      }
-    })
+  <div id="app-9">
+    <span v-once v-on:click="updateMessage">This will never change: {{ msg }}</span>
+  </div>
+  <hr>
+  <div id="app-10">
+    <p>Using mustaches: {{ rawHtml }}</p>
+    <p>Using v-html directive: <span v-html="rawHtml"></span></p>
+  </div>
+  <hr>
 
-    var app4 = new Vue({
-      el: '#app-4',
-      data: {
-        todos: [
-          { text: 'Learn JavaScript' },
-          { text: 'Learn Vue' },
-          { text: 'Build something awesome' }
-        ]
-      }
-    })
+  <div id="app-11">
+    <button v-bind:disabled="isButtonDisabled">Button</button>
+  </div>
+  <hr>
 
-    var app5 = new Vue({
-      el: '#app-5',
-      data: {
-        message: 'Hello Vue.js!'
-      },
-      methods: {
-        reverseMessage: function () {
-          this.message = this.message.split('').reverse().join('')
-        }
-      }
-    })
+  <div id="app-12">
+    <span>{{ ok ? 'YES' : 'NO' }}, make up your mind!</span>
+    <button v-on:click="flipOk">CHANGE IT</button>
+  </div>
+  <hr>
 
-    var app6 = new Vue({
-      el: '#app-6',
-      data: {
-        message: 'Hello Vue!'
-      }
-    })
-  </script>
+  <div id="app-13">
+    <button v-on:[eventname]="updateEventName">{{ eventname + ' me!' }}</button>
+    <div>{{ "You've done " + eventCount + " events!" }}</div>
+  </div>
+  <hr>
+
+  <div id="app-14">
+    <span :title="text">Shorthand Text</span>
+    <button @click="updateButton">{{ text }}</button>
+  </div>
+  <hr>
+
+  <div id="computed-prop">
+    <p>Original message: "{{ message }}"</p>
+    <p>Computed reversed message: "{{ reversedMessage }}"</p>
+    <p>Method reversed message: "{{ makeReversedMessage() }}"</p>
+  </div>
+  <hr>
+
+  <div id="watched-prop">
+    <p>{{ fullName }}</p>
+    <input v-model="firstName">
+    <input v-model="lastName">
+  </div>
+  <hr>
+
+  <div id="computed-setter">
+    <p>{{ fullName }}</p>
+    <input v-model="firstName">
+    <input v-model="lastName"> 
+  </div>
 </body>
+<script src="script.js"></script>
 </html>
