@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Class and Style Bindings</title>
+  <script src="https://unpkg.com/vue"></script>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="app-1">
+    <div class="static" v-bind:class="{ active: isActive, 'text-danger': hasError }">
+      Class Bindings!
+    </div>
+  </div>
+  <hr>
+
+  <div id="app-2">
+    <div v-bind:class="classObject">
+      Entire Class Object!
+    </div>
+  </div>
+  <hr>
+
+  <div id="app-3">
+    <div v-bind:class="classObject">
+      Computed Class Object!
+    </div>
+  </div>
+</body>
+<script src="script.js"></script>
+</html>
