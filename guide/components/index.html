@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<head>
+  <title>Vue Components</title>
+  <script src="https://unpkg.com/vue"></script>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div id="components-demo">
+    <button-counter></button-counter>
+    <button-counter></button-counter>
+    <button-counter></button-counter>
+    <hr>
+
+    <blog-post
+      v-for="post in posts"
+      v-bind:key="post.id"
+      v-bind:post="post"
+    ></blog-post>
+  </div>
+  <hr>
+
+  <div id="blog-posts-events-demo">
+    <h2>Events</h2>
+    <div :style="{ fontSize: postFontSize + 'em' }">
+      <blog-post-event
+        v-for="post in posts"
+        v-bind:key="post.id"
+        v-bind:post="post"
+        v-on:enlarge-text="postFontSize += 0.1"
+      ></blog-post-event>
+    </div>
+    <hr>
+
+    <h2>Events with Values</h2>
+    <div :style="{ fontSize: postValueFontSize + 'em' }">
+        <blog-post-event-value
+          v-for="post in posts"
+          v-bind:key="post.id"
+          v-bind:post="post"
+          v-on:enlarge-text="postValueFontSize += $event"
+        ></blog-post-event>
+      </div>
+  </div>
+
+</body>
+<script src="script.js"></script>
+</html>
